@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Bracuyana - Site Oficial</title>
-<link rel="icon" href="Brasão_9A.ico" type="image/x-icon">
+<link rel="icon" href="Brasão_9A.ico" type="image/x-icon" />
 <style>
   /* Reset básico */
   * {
@@ -12,16 +12,16 @@
   }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #004d40, #81d4fa, #ffffff);
-    color: #004d40;
+    background: linear-gradient(135deg, #1a3a5f, #2e8b57, #ffffff); /* azul, verde e branco */
+    color: #123d0c; /* verde escuro */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   header {
-    background-color: rgba(0,77,64,0.9);
+    background-color: rgba(10, 70, 40, 0.85);
     padding: 15px 30px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   }
   nav {
     display: flex;
@@ -29,9 +29,9 @@
     gap: 30px;
   }
   nav button {
-    background: transparent;
-    border: 2px solid #004d40;
-    color: #004d40;
+    background-color: #ffeb3b; /* amarelo */
+    border: 2px solid #4caf50; /* verde */
+    color: #4caf50; /* texto verde */
     font-size: 1.1rem;
     padding: 10px 20px;
     cursor: pointer;
@@ -40,20 +40,20 @@
   }
   nav button:hover,
   nav button.active {
-    background-color: #00796b;
-    color: #e0f7fa;
-    border-color: #004d40;
+    background-color: #cddc39; /* amarelo mais escuro */
+    color: #1b5e20; /* verde escuro */
+    border-color: #1b5e20;
   }
 
   main {
     flex: 1;
     padding: 40px 20px;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 20px auto;
-    background-color: rgba(224,247,250,0.85);
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
-    box-shadow: 0 0 20px #004d40;
-    color: #004d40;
+    box-shadow: 0 0 20px #4caf50aa;
+    color: #123d0c;
   }
 
   /* Conteúdo das abas */
@@ -75,21 +75,22 @@
   form.login-form {
     max-width: 350px;
     margin: 0 auto;
-    background: #004d40;
+    background: #4caf50aa;
     padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 0 15px #00796b;
-    color: #e0f7fa;
+    box-shadow: 0 0 15px #a3d977;
+    color: #fff;
   }
   form.login-form h2 {
     margin-bottom: 20px;
-    color: #b2dfdb;
+    color: #fffde7;
     text-align: center;
   }
   form.login-form label {
     display: block;
     margin: 15px 0 6px 0;
     font-weight: 600;
+    color: #e6ee9c;
   }
   form.login-form input[type="text"],
   form.login-form input[type="password"] {
@@ -105,15 +106,15 @@
     padding: 12px;
     font-weight: bold;
     font-size: 1.1rem;
-    color: #004d40;
-    background-color: #b2dfdb;
+    color: #1b5e20;
+    background-color: #ffeb3b;
     border: none;
     border-radius: 7px;
     cursor: pointer;
     transition: background-color 0.3s;
   }
   form.login-form input[type="submit"]:hover {
-    background-color: #80cbc4;
+    background-color: #fbc02d;
   }
   form.login-form .msg {
     margin-top: 15px;
@@ -121,45 +122,10 @@
     font-weight: 600;
   }
   form.login-form .msg.success {
-    color: #4caf50;
+    color: #a6ff96;
   }
   form.login-form .msg.error {
-    color: #e53935;
-  }
-
-  /* Página dashboard */
-  #dashboard {
-    display: none;
-    max-width: 900px;
-    margin: 20px auto;
-    background: #e0f7fa;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #004d40;
-    color: #004d40;
-  }
-  #dashboard h2 {
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  #dashboard p {
-    margin-bottom: 10px;
-    line-height: 1.5;
-  }
-  #logoutBtn {
-    background-color: #004d40;
-    color: #e0f7fa;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    font-weight: bold;
-    display: block;
-    margin: 20px auto 0 auto;
-    transition: background-color 0.3s;
-  }
-  #logoutBtn:hover {
-    background-color: #00796b;
+    color: #ff6e6e;
   }
 
   /* Responsivo */
@@ -168,10 +134,9 @@
       flex-direction: column;
       gap: 15px;
     }
-    main, #dashboard {
-      margin: 10px;
-      padding: 15px;
-      border-radius: 8px;
+    main {
+      padding: 20px 10px;
+      border-radius: 0;
     }
   }
 
@@ -183,7 +148,6 @@
   <nav>
     <button class="tab-btn active" data-target="home">Home</button>
     <button class="tab-btn" data-target="sobre">Sobre</button>
-    <button class="tab-btn" data-target="eventos">Eventos</button>
     <button class="tab-btn" data-target="contato">Contato</button>
     <button class="tab-btn" data-target="login">Login</button>
   </nav>
@@ -192,38 +156,33 @@
 <main>
   <section id="home" class="tab-content active">
     <h1>Bem-vindo a Bracuyana!</h1>
-    <p>Este é o site oficial da nação dos bracuyanos, um lugar cheio de história, cultura e resistência.</p>
-    <p>Explore as abas para conhecer mais sobre a nossa ilha, eventos futuros e se conectar conosco!</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Flag_of_the_Bahamas.svg/320px-Flag_of_the_Bahamas.svg.png" alt="Bandeira das Bahamas" style="max-width:150px; margin-top:20px; border-radius: 8px; box-shadow: 0 0 10px #004d40;">
+    <p>Esse é o site oficial da nação dos bracuyanos, um lugar cheio de história, cultura e resistência.</p>
+    <p>Aqui você encontra novidades, informações e a comunidade mais ativa da região.</p>
+    <h2>Notícias Recentes</h2>
+    <ul>
+      <li>📢 Novas rotas comerciais abertas com outras ilhas da região.</li>
+      <li>🎉 Festa da Liberdade marcada para o próximo mês na capital.</li>
+      <li>🌱 Projeto de sustentabilidade local com plantio de árvores nativas.</li>
+    </ul>
   </section>
 
   <section id="sobre" class="tab-content">
     <h1>Sobre Bracuyana</h1>
-    <p>Bracuyana é uma ilha situada nas Bahamas, fundada por refugiados brasileiros e cubanos. Ela é conhecida por sua cultura única e por ser um território livre, onde a liberdade e a diversidade são celebradas.</p>
-    <p>Nossa comunidade é formada por pessoas que prezam a criatividade, a solidariedade e a resistência pacífica.</p>
-    <h3>Missão</h3>
-    <p>Construir um espaço onde todos possam viver em harmonia e respeitar as diferenças.</p>
-    <h3>Visão</h3>
-    <p>Ser reconhecida como uma comunidade exemplar de convivência multicultural e sustentável.</p>
-  </section>
-
-  <section id="eventos" class="tab-content">
-    <h1>Eventos em Bracuyana</h1>
-    <ul>
-      <li><strong>Festa da Cultura Bracuyana</strong> - 25 de Julho de 2025: Música, comida típica e dança.</li>
-      <li><strong>Encontro Anual de Refugiados</strong> - 10 de Setembro de 2025: Palestras e troca de experiências.</li>
-      <li><strong>Festival de Artes e Resistência</strong> - 5 a 8 de Novembro de 2025: Exposições, teatro e oficinas.</li>
-    </ul>
-    <p>Participe e faça parte dessa história!</p>
+    <p>Bracuyana é uma ilha situada nas Bahamas, fundada por refugiados brasileiros e cubanos. Ela é conhecida por sua cultura única e por ser um território livre.</p>
+    <p>Nosso povo é unido pela luta, criatividade e pelo amor à liberdade. Aqui, cada história conta, e cada pessoa faz a diferença.</p>
+    <h2>Cultura</h2>
+    <p>A música e a dança são partes essenciais da vida em Bracuyana, com festivais durante todo o ano celebrando nossas raízes.</p>
+    <h2>Economia</h2>
+    <p>A economia local se baseia em pesca sustentável, agricultura orgânica e comércio artesanal com outras ilhas.</p>
   </section>
 
   <section id="contato" class="tab-content">
     <h1>Contato</h1>
-    <p>Quer conversar com a gente? Envie um e-mail para <a href="mailto:bracuyana@outlook.com.br" style="color:#004d40;">bracuyana@outlook.com.br</a> ou nos siga nas redes sociais!</p>
+    <p>Quer conversar com a gente? Envie um e-mail para <a href="mailto:bracuyana@outlook.com.br" style="color:#4caf50;">bracuyana@outlook.com.br</a> ou nos siga nas redes sociais!</p>
     <ul>
-      <li><a href="https://youtube.com/@bracuyana" target="_blank" style="color:#004d40;">YouTube</a></li>
-      <li><a href="https://facebook.com/bracuyana" target="_blank" style="color:#004d40;">Facebook</a></li>
-      <li><a href="https://instagram.com/bracuyana" target="_blank" style="color:#004d40;">Instagram</a></li>
+      <li><a href="https://youtube.com/@bracuyana" target="_blank" style="color:#4caf50;">YouTube</a></li>
+      <li><a href="https://facebook.com/bracuyana" target="_blank" style="color:#4caf50;">Facebook</a></li>
+      <li><a href="https://instagram.com/bracuyana" target="_blank" style="color:#4caf50;">Instagram</a></li>
     </ul>
   </section>
 
@@ -240,80 +199,85 @@
       <div class="msg" id="msg"></div>
     </form>
   </section>
-</main>
 
-<!-- Página privada após login -->
-<section id="dashboard">
-  <h2>Olá, <span id="userName"></span>! Bem-vindo ao Painel Bracuyano.</h2>
-  <p>Aqui você pode acompanhar as últimas notícias, eventos exclusivos e interagir com a comunidade.</p>
-  <ul>
-    <li>🌿 Novos projetos sustentáveis estão em desenvolvimento.</li>
-    <li>🎨 Exposições de arte e cultura local serão anunciadas em breve.</li>
-    <li>🤝 Conecte-se com outros bracuyanos em nosso fórum interno.</li>
-  </ul>
-  <button id="logoutBtn">Sair</button>
-</section>
+  <!-- Página após login, escondida inicialmente -->
+  <section id="dashboard" class="tab-content">
+    <h1>Bem-vindo ao Painel de Controle</h1>
+    <p>Você está logado como <span id="loggedUser"></span>.</p>
+    <p>Aqui você pode acessar conteúdos exclusivos e gerenciar sua conta.</p>
+    <button id="logoutBtn" style="
+      background-color:#ffeb3b;
+      color:#4caf50;
+      border:none;
+      padding:10px 20px;
+      border-radius:6px;
+      cursor:pointer;
+      font-weight:bold;
+      transition: background-color 0.3s;
+    ">Sair</button>
+  </section>
+</main>
 
 <script>
   // Troca de abas
   const tabs = document.querySelectorAll('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
-  const dashboard = document.getElementById('dashboard');
-  const loginForm = document.getElementById('loginForm');
-  const msg = document.getElementById('msg');
-  const userNameSpan = document.getElementById('userName');
-  const logoutBtn = document.getElementById('logoutBtn');
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
+      // Remove active de todas abas
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
 
+      // Mostra conteúdo certo
       const target = tab.dataset.target;
       contents.forEach(c => {
         c.id === target ? c.classList.add('active') : c.classList.remove('active');
       });
-      dashboard.style.display = 'none'; // Oculta dashboard ao trocar abas públicas
     });
   });
 
-  // Login simulado frontend
-  loginForm.addEventListener('submit', e => {
+  // Simulação de login simples (frontend só)
+  const form = document.getElementById('loginForm');
+  const msg = document.getElementById('msg');
+  const dashboard = document.getElementById('dashboard');
+  const loggedUserSpan = document.getElementById('loggedUser');
+  const logoutBtn = document.getElementById('logoutBtn');
+
+  form.addEventListener('submit', e => {
     e.preventDefault();
-    const user = loginForm.user.value.trim();
-    const pass = loginForm.pass.value.trim();
+    const user = form.user.value.trim();
+    const pass = form.pass.value.trim();
 
     // Usuário e senha simulados
-    if(user === 'tavvy' && pass === 'senha123') {
-      // Mostra dashboard, oculta abas públicas
-      dashboard.style.display = 'block';
-      main.style.display = 'none';
-      msg.textContent = '';
-      userNameSpan.textContent = user;
+    if (user === 'tavvy' && pass === 'senha123') {
+      msg.textContent = 'Login bem-sucedido! Bem-vindo, ' + user + ' 😊';
+      msg.className = 'msg success';
 
-      // Remove active das abas e botao login
+      // Mostra o dashboard e oculta outras abas
+      contents.forEach(c => c.classList.remove('active'));
+      dashboard.classList.add('active');
+
+      // Remove active dos botões de menu
       tabs.forEach(t => t.classList.remove('active'));
-      // Esconder o menu para não confundir
-      document.querySelector('header nav').style.display = 'none';
+
+      loggedUserSpan.textContent = user;
+      form.reset();
     } else {
       msg.textContent = 'Usuário ou senha incorretos!';
       msg.className = 'msg error';
     }
   });
 
-  // Logout simples
   logoutBtn.addEventListener('click', () => {
-    dashboard.style.display = 'none';
-    main.style.display = 'block';
-    document.querySelector('header nav').style.display = 'flex';
-    // Voltar para Home
-    tabs.forEach(t => t.classList.remove('active'));
-    document.querySelector('.tab-btn[data-target="home"]').classList.add('active');
-    contents.forEach(c => {
-      c.id === 'home' ? c.classList.add('active') : c.classList.remove('active');
-    });
-    loginForm.reset();
+    // Voltar para aba login ao sair
+    contents.forEach(c => c.classList.remove('active'));
+    document.getElementById('login').classList.add('active');
     msg.textContent = '';
+    tabs.forEach(t => t.classList.remove('active'));
+    tabs.forEach(t => {
+      if(t.dataset.target === 'login') t.classList.add('active');
+    });
   });
 </script>
 
