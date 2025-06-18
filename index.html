@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bracuyana - Site Oficial</title>
+<style>
+  /* Reset básico */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #eee;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background-color: rgba(31,28,44,0.85);
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  }
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  nav button {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  nav button:hover,
+  nav button.active {
+    background-color: #7e57c2;
+    color: #fff;
+  }
+
+  main {
+    flex: 1;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 12px;
+    box-shadow: 0 0 15px #5c4b8c;
+  }
+
+  /* Conteúdo das abas */
+  section.tab-content {
+    display: none;
+    animation: fadeIn 0.7s ease forwards;
+  }
+  section.tab-content.active {
+    display: block;
+  }
+
+  /* Animação fade */
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+
+  /* Estilos do formulário de login */
+  form.login-form {
+    max-width: 350px;
+    margin: 0 auto;
+    background: #2a2650;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #a788e6;
+  }
+  form.login-form h2 {
+    margin-bottom: 20px;
+    color: #d3caff;
+    text-align: center;
+  }
+  form.login-form label {
+    display: block;
+    margin: 15px 0 6px 0;
+    font-weight: 600;
+    color: #c1b7ff;
+  }
+  form.login-form input[type="text"],
+  form.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 7px;
+    font-size: 1rem;
+  }
+  form.login-form input[type="submit"] {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #7e57c2;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  form.login-form input[type="submit"]:hover {
+    background-color: #ab88f9;
+  }
+  form.login-form .msg {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+  }
+  form.login-form .msg.success {
+    color: #a6ff96;
+  }
+  form.login-form .msg.error {
+    color: #ff6e6e;
+  }
+
+  /* Responsivo */
+  @media (max-width: 600px) {
+    nav {
+      flex-direction: column;
+      gap: 15px;
+    }
+    main {
+      padding: 20px 10px;
+      border-radius: 0;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <button class="tab-btn active" data-target="home">Home</button>
+    <button class="tab-btn" data-target="sobre">Sobre</button>
+    <button class="tab-btn" data-target="contato">Contato</button>
+    <button class="tab-btn" data-target="login">Login</button>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="tab-content active">
+    <h1>Bem-vindo a Bracuyana!</h1>
+    <p>Esse é o site oficial da nação dos bracuyanos, um lugar cheio de história, cultura e resistência.</p>
+    <p>Aqui você encontra novidades, informações e a comunidade mais ativa da região.</p>
+  </section>
+
+  <section id="sobre" class="tab-content">
+    <h1>Sobre Bracuyana</h1>
+    <p>Bracuyana é uma ilha situada nas Bahamas, fundada por refugiados brasileiros e cubanos. Ela é conhecida por sua cultura única e por ser um território livre.</p>
+    <p>Nosso povo é unido pela luta, criatividade e pelo amor à liberdade. Aqui, cada história conta, e cada pessoa faz a diferença.</p>
+  </section>
+
+  <section id="contato" class="tab-content">
+    <h1>Contato</h1>
+    <p>Quer conversar com a gente? Envie um e-mail para <a href="mailto:contato@bracuyana.com" style="color:#ab88f9;">contato@bracuyana.com</a> ou nos siga nas redes sociais!</p>
+    <ul>
+      <li><a href="https://twitter.com/bracuyana" target="_blank" style="color:#ab88f9;">Twitter</a></li>
+      <li><a href="https://facebook.com/bracuyana" target="_blank" style="color:#ab88f9;">Facebook</a></li>
+      <li><a href="https://instagram.com/bracuyana" target="_blank" style="color:#ab88f9;">Instagram</a></li>
+    </ul>
+  </section>
+
+  <section id="login" class="tab-content">
+    <form class="login-form" id="loginForm">
+      <h2>Login</h2>
+      <label for="user">Usuário:</label>
+      <input type="text" id="user" name="user" placeholder="Digite seu usuário" required />
+      
+      <label for="pass">Senha:</label>
+      <input type="password" id="pass" name="pass" placeholder="Digite sua senha" required />
+      
+      <input type="submit" value="Entrar" />
+      <div class="msg" id="msg"></div>
+    </form>
+  </section>
+</main>
+
+<script>
+  // Troca de abas
+  const tabs = document.querySelectorAll('.tab-btn');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active de todas abas
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Mostra conteúdo certo
+      const target = tab.dataset.target;
+      contents.forEach(c => {
+        c.id === target ? c.classList.add('active') : c.classList.remove('active');
+      });
+    });
+  });
+
+  // Simulação de login simples (frontend só)
+  const form = document.getElementById('loginForm');
+  const msg = document.getElementById('msg');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const user = form.user.value.trim();
+    const pass = form.pass.value.trim();
+
+    // Usuário e senha simulados
+    if (user === 'tavvy' && pass === 'senha123') {
+      msg.textContent = 'Login bem-sucedido! Bem-vindo, ' + user + ' 😊';
+      msg.className = 'msg success';
+    } else {
+      msg.textContent = 'Usuário ou senha incorretos!';
+      msg.className = 'msg error';
+    }
+  });
+</script>
+
+</body>
+</html>
