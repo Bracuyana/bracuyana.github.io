@@ -6,23 +6,22 @@
   <title>Bracuyana</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-    body { background: #000; color: #fff; display:flex; min-height:100vh; }
+    body { background: #1e1e1e; color: #fff; display:flex; min-height:100vh; }
 
     /* Sidebar simples */
     nav {
       position: fixed;
-      left: -220px; /* escondido inicialmente */
+      left: -220px;
       top: 0;
       width: 220px;
       height: 100%;
-      background: #111;
+      background: #2c2c2c;
       padding: 60px 20px 20px 20px;
       display: flex;
       flex-direction: column;
       gap: 15px;
       transition: left 0.3s;
       z-index: 100;
-      border-right: 2px solid #00ff00; /* verde simples */
     }
 
     nav a {
@@ -32,7 +31,7 @@
     }
 
     nav a:hover {
-      color: #ffff00; /* amarelo simples */
+      color: #00aa00; /* verde simples */
     }
 
     nav.active { left: 0; }
@@ -44,16 +43,16 @@
       left:0;
       width:100%;
       height:50px;
-      background: #111;
+      background: #2c2c2c;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding:0 20px;
-      border-bottom: 2px solid #00ff00;
+      border-bottom: 1px solid #444;
       z-index: 101;
     }
 
-    header h1 { color:#00ffff; font-size:1.6em; } /* azul simples */
+    header h1 { color:#f0f0f0; font-size:1.6em; }
 
     /* Menu hamburguer */
     .menu-icon {
@@ -75,41 +74,70 @@
       max-width:800px;
     }
 
-    main h2 { color:#ffff00; margin-bottom:10px; } /* amarelo simples */
+    main h2 { color:#aaaaff; margin-bottom:10px; } /* azul claro simples */
     main p { color:#ccc; margin-bottom:10px; }
 
     footer {
       text-align:center;
       padding:10px;
-      color:#fff;
+      color:#ccc;
       margin-top:20px;
-      border-top: 1px solid #00ff00;
+      border-top: 1px solid #444;
     }
+
+    /* Abas simples */
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
   </style>
 </head>
 <body>
 
 <nav id="menu">
-  <a href="#">História</a>
-  <a href="#">Cultura</a>
-  <a href="#">Língua</a>
-  <a href="#">Geografia</a>
-  <a href="#">Notícias</a>
+  <a href="#" onclick="showTab('historia')">História</a>
+  <a href="#" onclick="showTab('cultura')">Cultura</a>
+  <a href="#" onclick="showTab('lingua')">Língua</a>
+  <a href="#" onclick="showTab('geografia')">Geografia</a>
+  <a href="#" onclick="showTab('noticias')">Notícias</a>
 </nav>
 
 <header>
   <h1>Bracuyana</h1>
   <div class="menu-icon" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
+    <div></div><div></div><div></div>
   </div>
 </header>
 
 <main>
-  <h2>Bem-vindo a Bracuyana!</h2>
-  <p>Este é um site simples sobre a nação de Bracuyana, fundado em 1994.</p>
-  <p>Explore seções como História, Cultura, Língua, Geografia e Notícias para conhecer mais sobre o país.</p>
+  <!-- História -->
+  <div id="historia" class="tab-content active">
+    <h2>História de Bracuyana</h2>
+    <p>Bracuyana foi fundada em 1994 por um grupo de refugiados brasileiros e cubanos que chegaram às Bahamas buscando um lugar para se estabelecer. Inicialmente, eles ocuparam uma pequena ilha desabitada, organizando a sociedade de forma autônoma e criando regras próprias para a convivência. Desde o começo, Bracuyana se destacou pela abordagem socialista-libertária, priorizando a cooperação e a liberdade individual dos cidadãos.</p>
+    <p>Apesar da ausência de reconhecimento oficial, os fundadores consolidaram práticas de governo, economia e cultura próprias, mantendo-se discretos para não chamar atenção das autoridades das Bahamas. Ao longo dos anos, Bracuyana se tornou conhecida por sua singularidade cultural, sua língua adaptada e por uma relação pragmática com o comércio e recursos naturais, tudo preservando a identidade de seus habitantes.</p>
+  </div>
+
+  <!-- Cultura -->
+  <div id="cultura" class="tab-content">
+    <h2>Cultura</h2>
+    <p>A cultura de Bracuyana mistura elementos brasileiros e cubanos, adaptados à nova realidade da ilha. Música, culinária e tradições locais são celebradas com destaque, mantendo a identidade própria do país.</p>
+  </div>
+
+  <!-- Língua -->
+  <div id="lingua" class="tab-content">
+    <h2>Língua</h2>
+    <p>O galego bracuyano é a língua oficial, uma mistura do galego com português brasileiro, que evoluiu com palavras próprias e gírias locais.</p>
+  </div>
+
+  <!-- Geografia -->
+  <div id="geografia" class="tab-content">
+    <h2>Geografia</h2>
+    <p>Bracuyana está localizada nas Bahamas, ocupando uma ilha discreta e de difícil acesso, cercada por águas cristalinas e vegetação tropical.</p>
+  </div>
+
+  <!-- Notícias -->
+  <div id="noticias" class="tab-content">
+    <h2>Notícias</h2>
+    <p>As notícias de Bracuyana são focadas em eventos internos, mudanças políticas e culturais, sempre mantendo a comunidade informada.</p>
+  </div>
 </main>
 
 <footer>
@@ -119,6 +147,12 @@
 <script>
   const menu = document.getElementById('menu');
   function toggleMenu() { menu.classList.toggle('active'); }
+
+  function showTab(tabId){
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(t => t.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+  }
 </script>
 
 </body>
