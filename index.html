@@ -1,28 +1,135 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bracuyana</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="Brasão_9A.ico">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
+    body { background: #000; color: #fff; }
+
+    /* Header com menu hamburguer */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #111;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #00ff00;
+    }
+
+    header h1 {
+      color: #ffff00;
+      font-size: 1.8em;
+    }
+
+    /* Menu hamburguer */
+    .menu-icon {
+      cursor: pointer;
+      width: 30px;
+      height: 25px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-icon div {
+      height: 4px;
+      background: #00ff00;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* Menu lateral */
+    nav {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background: #111;
+      border-left: 2px solid #00ff00;
+      padding: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: right 0.3s;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #00ff00;
+    }
+
+    nav.active {
+      right: 0;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 2px solid #00ff00;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ff00;
+    }
+
+    main h2 { color: #00ffff; margin-bottom: 15px; }
+    main p { color: #ccc; margin-bottom: 15px; }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #666;
+      border-top: 2px solid #00ff00;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-  <header class="navbar">
-    <img src="logo.png" alt="Logo Bracuyana" class="logo">
-    <nav>
-      <a href="https://github.com/bracuyana">GitHub</a>
-    </nav>
-  </header>
 
-  <main class="hero">
-    <h1>Bem-vindo a Bracuyana</h1>
-    <p>Terra livre, independente e revolucionária. 🌴🚩</p>
-    <a href="#" class="btn">Explorar o site</a>
-  </main>
+<header>
+  <h1>Bracuyana</h1>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</header>
 
-  <footer>
-    <p>&copy; 2025 República de Bracuyana</p>
-  </footer>
+<nav id="menu">
+  <a href="#">História</a>
+  <a href="#">Cultura</a>
+  <a href="#">Língua</a>
+  <a href="#">Geografia</a>
+  <a href="#">Notícias</a>
+</nav>
+
+<main>
+  <h2>Bem-vindo a Bracuyana!</h2>
+  <p>Este é um site simples sobre a nação de Bracuyana, com cores que destacam sua identidade e um menu lateral prático.</p>
+  <p>Explore seções como História, Cultura, Língua, Geografia e Notícias para conhecer mais sobre Bracuyana.</p>
+</main>
+
+<footer>
+  © 2025 Bracuyana - Todos os direitos reservados
+</footer>
+
+<script>
+  const menu = document.getElementById('menu');
+  function toggleMenu() {
+    menu.classList.toggle('active');
+  }
+</script>
+
 </body>
 </html>
