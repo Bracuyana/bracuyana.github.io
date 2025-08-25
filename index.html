@@ -6,96 +6,96 @@
   <title>Bracuyana</title>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
-    body { background: #000; color: #fff; }
+    body { background: #000; color: #fff; display:flex; min-height:100vh; }
 
-    /* Header com menu hamburguer */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      background-color: #111;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 2px solid #00ff00;
-    }
-
-    header h1 {
-      color: #ffff00;
-      font-size: 1.8em;
-    }
-
-    /* Menu hamburguer */
-    .menu-icon {
-      cursor: pointer;
-      width: 30px;
-      height: 25px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .menu-icon div {
-      height: 4px;
-      background: #00ff00;
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    /* Menu lateral */
+    /* Sidebar simples */
     nav {
       position: fixed;
+      left: -220px; /* escondido inicialmente */
       top: 0;
-      right: -250px;
-      width: 250px;
+      width: 220px;
       height: 100%;
       background: #111;
-      border-left: 2px solid #00ff00;
-      padding: 50px 20px;
+      padding: 60px 20px 20px 20px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      transition: right 0.3s;
+      gap: 15px;
+      transition: left 0.3s;
+      z-index: 100;
+      border-right: 2px solid #00ff00; /* verde simples */
     }
 
     nav a {
       color: #fff;
       text-decoration: none;
-      font-size: 1.2em;
-      transition: color 0.2s;
+      font-size: 1.1em;
     }
 
     nav a:hover {
-      color: #00ff00;
+      color: #ffff00; /* amarelo simples */
     }
 
-    nav.active {
-      right: 0;
+    nav.active { left: 0; }
+
+    /* Header simples */
+    header {
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:50px;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding:0 20px;
+      border-bottom: 2px solid #00ff00;
+      z-index: 101;
     }
 
+    header h1 { color:#00ffff; font-size:1.6em; } /* azul simples */
+
+    /* Menu hamburguer */
+    .menu-icon {
+      cursor:pointer;
+      width:25px; height:20px;
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+
+    .menu-icon div {
+      height:3px; background:#fff; border-radius:2px;
+    }
+
+    /* Conteúdo principal */
     main {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      border: 2px solid #00ff00;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00ff00;
+      flex:1;
+      margin-left:20px;
+      margin-top:60px;
+      padding:20px;
+      max-width:800px;
     }
 
-    main h2 { color: #00ffff; margin-bottom: 15px; }
-    main p { color: #ccc; margin-bottom: 15px; }
+    main h2 { color:#ffff00; margin-bottom:10px; } /* amarelo simples */
+    main p { color:#ccc; margin-bottom:10px; }
 
     footer {
-      text-align: center;
-      padding: 15px;
-      color: #666;
-      border-top: 2px solid #00ff00;
-      margin-top: 40px;
+      text-align:center;
+      padding:10px;
+      color:#fff;
+      margin-top:20px;
+      border-top: 1px solid #00ff00;
     }
   </style>
 </head>
 <body>
+
+<nav id="menu">
+  <a href="#">História</a>
+  <a href="#">Cultura</a>
+  <a href="#">Língua</a>
+  <a href="#">Geografia</a>
+  <a href="#">Notícias</a>
+</nav>
 
 <header>
   <h1>Bracuyana</h1>
@@ -106,18 +106,10 @@
   </div>
 </header>
 
-<nav id="menu">
-  <a href="#">História</a>
-  <a href="#">Cultura</a>
-  <a href="#">Língua</a>
-  <a href="#">Geografia</a>
-  <a href="#">Notícias</a>
-</nav>
-
 <main>
   <h2>Bem-vindo a Bracuyana!</h2>
-  <p>Este é um site simples sobre a nação de Bracuyana, com cores que destacam sua identidade e um menu lateral prático.</p>
-  <p>Explore seções como História, Cultura, Língua, Geografia e Notícias para conhecer mais sobre Bracuyana.</p>
+  <p>Este é um site simples sobre a nação de Bracuyana, fundado em 1994.</p>
+  <p>Explore seções como História, Cultura, Língua, Geografia e Notícias para conhecer mais sobre o país.</p>
 </main>
 
 <footer>
@@ -126,9 +118,7 @@
 
 <script>
   const menu = document.getElementById('menu');
-  function toggleMenu() {
-    menu.classList.toggle('active');
-  }
+  function toggleMenu() { menu.classList.toggle('active'); }
 </script>
 
 </body>
