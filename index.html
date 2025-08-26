@@ -32,13 +32,18 @@
       z-index: 100;
     }
 
-    nav a {
+    nav a, nav button {
       color: #fff;
       text-decoration: none;
       font-size: 1.1em;
+      background:none;
+      border:none;
+      text-align:left;
+      cursor:pointer;
+      padding:5px 0;
     }
 
-    nav a:hover { color: #00aa00; }
+    nav a:hover, nav button:hover { color: #00aa00; }
 
     nav.active { left: 0; }
 
@@ -59,12 +64,16 @@
     }
 
     header h1 {
-      color:#f0f0f0;
-      font-size:1.6em;
       display:flex;
       align-items:center;
       gap:10px;
+      font-size:1.6em;
+      transition: color 0.3s;
     }
+
+    /* Nome Bracuyana conforme tema */
+    body.dark header h1 { color:#f0f0f0; }
+    body.light header h1 { color:#000; }
 
     /* Menu hamburguer */
     .menu-icon {
@@ -75,18 +84,7 @@
 
     .menu-icon div {
       height:3px; background:#fff; border-radius:2px;
-    }
-
-    /* Botão claro/escuro */
-    .theme-btn {
-      background:#444;
-      color:#fff;
-      border:none;
-      padding:5px 10px;
-      border-radius:5px;
-      cursor:pointer;
-      font-size:0.9em;
-      margin-right:10px;
+      transition: background 0.3s;
     }
 
     /* Conteúdo principal */
@@ -125,16 +123,15 @@
     }
     body.light header { background:#ddd; border-bottom:1px solid #aaa; }
     body.light nav { background:#eee; border-right:1px solid #aaa; }
-    body.light nav a { color:#000; }
-    body.light nav a:hover { color:#008800; }
+    body.light nav a, body.light nav button { color:#000; }
+    body.light nav a:hover, body.light nav button:hover { color:#008800; }
     body.light main h2 { color:#0000aa; }
     body.light main p { color:#333; }
     body.light footer { color:#333; border-top:1px solid #aaa; }
     body.light .menu-icon div { background:#000; }
-    body.light .theme-btn { background:#ccc; color:#000; }
   </style>
 </head>
-<body>
+<body class="dark">
 
 <nav id="menu">
   <a href="#" onclick="showTab('historia')">História</a>
@@ -142,17 +139,18 @@
   <a href="#" onclick="showTab('lingua')">Língua</a>
   <a href="#" onclick="showTab('geografia')">Geografia</a>
   <a href="#" onclick="showTab('noticias')">Notícias</a>
+  <hr style="border:1px solid #555; margin:10px 0;">
+  <span>Tema:</span>
+  <button onclick="setTheme('dark')">Escuro</button>
+  <button onclick="setTheme('light')">Claro</button>
 </nav>
 
 <header>
   <h1>
     <img src="Brasão_9A.png" alt="Ícone" width="30" height="30"> Bracuyana
   </h1>
-  <div>
-    <button class="theme-btn" onclick="toggleTheme()">Modo Claro/Escuro</button>
-    <div class="menu-icon" onclick="toggleMenu()">
-      <div></div><div></div><div></div>
-    </div>
+  <div class="menu-icon" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
   </div>
 </header>
 
@@ -201,7 +199,10 @@
 
 <script>
   const menu = document.getElementById('menu');
-  function toggleMenu() { menu.classList.toggle('active'); }
+
+  function toggleMenu() {
+    menu.classList.toggle('active');
+  }
 
   function showTab(tabId){
     const tabs = document.querySelectorAll('.tab-content');
@@ -209,8 +210,14 @@
     document.getElementById(tabId).classList.add('active');
   }
 
-  function toggleTheme(){
-    document.body.classList.toggle('light');
+  function setTheme(theme){
+    if(theme === 'light'){
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
+    } else {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    }
   }
 </script>
 
