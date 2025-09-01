@@ -4,46 +4,54 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bracuyana</title>
-  <!-- Favicon -->
   <link rel="icon" href="Brasão_9A.png" type="image/png">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif; }
     body {
-      background: #1e1e1e;
+      background: #2c2c2c;
       color: #fff;
       display:flex;
       min-height:100vh;
-      transition: all 0.3s;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Tema claro */
+    body.light {
+      background:#fff;
+      color:#000;
     }
 
     /* Sidebar */
     nav {
       position: fixed;
-      left: -220px;
+      left: -240px;
       top: 0;
-      width: 220px;
+      width: 240px;
       height: 100%;
-      background: #2c2c2c;
+      background: #1e1e1e;
       padding: 60px 20px 20px 20px;
       display: flex;
       flex-direction: column;
       gap: 15px;
       transition: left 0.3s;
       z-index: 100;
+      border-right: 2px solid #444;
+    }
+    body.light nav {
+      background:#f0f0f0;
+      border-right: 2px solid #ccc;
     }
 
-    nav a, nav button {
-      color: #fff;
+    nav a {
+      color: inherit;
       text-decoration: none;
       font-size: 1.1em;
-      background:none;
-      border:none;
-      text-align:left;
       cursor:pointer;
-      padding:5px 0;
     }
 
-    nav a:hover, nav button:hover { color: #00aa00; }
+    nav a:hover {
+      font-weight: bold;
+    }
 
     nav.active { left: 0; }
 
@@ -54,37 +62,39 @@
       left:0;
       width:100%;
       height:50px;
-      background: #2c2c2c;
+      background: #1e1e1e;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding:0 20px;
-      border-bottom: 1px solid #444;
+      border-bottom: 2px solid #444;
       z-index: 101;
+      transition: background 0.3s;
+    }
+    body.light header {
+      background:#f0f0f0;
+      border-bottom:2px solid #ccc;
     }
 
     header h1 {
+      font-size:1.4em;
       display:flex;
       align-items:center;
       gap:10px;
-      font-size:1.6em;
-      transition: color 0.3s;
+    }
+    header h1 img {
+      width:30px;
+      height:30px;
     }
 
-    /* Nome Bracuyana conforme tema */
-    body.dark header h1 { color:#f0f0f0; }
-    body.light header h1 { color:#000; }
-
-    /* Menu hamburguer */
+    /* Menu Hamburguer */
     .menu-icon {
       cursor:pointer;
       width:25px; height:20px;
       display:flex; flex-direction:column; justify-content:space-between;
     }
-
     .menu-icon div {
-      height:3px; background:#fff; border-radius:2px;
-      transition: background 0.3s;
+      height:3px; background:currentColor; border-radius:2px;
     }
 
     /* Conteúdo principal */
@@ -93,131 +103,181 @@
       margin-left:20px;
       margin-top:60px;
       padding:20px;
-      max-width:800px;
-      transition: all 0.3s;
+      max-width:900px;
     }
 
-    main h2 { color:#aaaaff; margin-bottom:10px; }
-    main p { color:#ccc; margin-bottom:10px; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
 
-    /* Imagens brasão e bandeira */
-    .img-container { display:flex; gap:20px; margin-top:15px; }
-    .img-container img { max-width:150px; height:auto; border:1px solid #ccc; }
+    .img-container {
+      display:flex;
+      gap:20px;
+      margin-top:15px;
+    }
+    .img-container img {
+      max-width:150px;
+      height:auto;
+      border:1px solid #444;
+      border-radius:5px;
+    }
+    body.light .img-container img {
+      border:1px solid #ccc;
+    }
+
+    /* Botão PDF */
+    .pdf-btn {
+      display:inline-block;
+      padding:10px 15px;
+      background:#444;
+      color:#fff;
+      text-decoration:none;
+      border-radius:5px;
+      font-weight:bold;
+    }
+    body.light .pdf-btn {
+      background:#ccc;
+      color:#000;
+    }
 
     footer {
       text-align:center;
       padding:10px;
-      color:#ccc;
       margin-top:20px;
       border-top: 1px solid #444;
     }
-
-    /* Abas */
-    .tab-content { display:none; }
-    .tab-content.active { display:block; }
-
-    /* Tema claro */
-    body.light {
-      background:#f0f0f0;
-      color:#000;
+    body.light footer {
+      border-top:1px solid #ccc;
     }
-    body.light header { background:#ddd; border-bottom:1px solid #aaa; }
-    body.light nav { background:#eee; border-right:1px solid #aaa; }
-    body.light nav a, body.light nav button { color:#000; }
-    body.light nav a:hover, body.light nav button:hover { color:#008800; }
-    body.light main h2 { color:#0000aa; }
-    body.light main p { color:#333; }
-    body.light footer { color:#333; border-top:1px solid #aaa; }
-    body.light .menu-icon div { background:#000; }
+
+    /* Lista de opções no menu */
+    .menu-option {
+      margin-top:20px;
+      font-weight:bold;
+    }
+    .theme-toggle {
+      cursor:pointer;
+      margin-top:10px;
+    }
+
+    iframe {
+      border:1px solid #444;
+      width:100%;
+    }
+    body.light iframe {
+      border:1px solid #ccc;
+    }
   </style>
 </head>
-<body class="dark">
+<body>
 
+<!-- Menu Lateral -->
 <nav id="menu">
-  <a href="#" onclick="showTab('historia')">História</a>
-  <a href="#" onclick="showTab('cultura')">Cultura</a>
-  <a href="#" onclick="showTab('lingua')">Língua</a>
-  <a href="#" onclick="showTab('geografia')">Geografia</a>
-  <a href="#" onclick="showTab('noticias')">Notícias</a>
-  <hr style="border:1px solid #555; margin:10px 0;">
-  <span>Tema:</span>
-  <button onclick="setTheme('dark')">Escuro</button>
-  <button onclick="setTheme('light')">Claro</button>
+  <a onclick="showTab('historia')">História</a>
+  <a onclick="showTab('cultura')">Cultura</a>
+  <a onclick="showTab('lingua')">Língua</a>
+  <a onclick="showTab('geografia')">Geografia</a>
+  <a onclick="showTab('noticias')">Notícias</a>
+  <div class="menu-option">Tema:</div>
+  <div class="theme-toggle" onclick="toggleTheme()">🌙 Escuro / ☀️ Claro</div>
 </nav>
 
+<!-- Header -->
 <header>
   <h1>
-    <img src="Brasão_9A.png" alt="Ícone" width="30" height="30"> Bracuyana
+    <img src="Brasão_9A.png" alt="Ícone"> Bracuyana
   </h1>
   <div class="menu-icon" onclick="toggleMenu()">
-    <div></div><div></div><div></div>
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
 </header>
 
+<!-- Conteúdo -->
 <main>
   <!-- História -->
   <div id="historia" class="tab-content active">
     <h2>História de Bracuyana</h2>
-    <p>Bracuyana foi fundada em 1994 por refugiados brasileiros e cubanos nas Bahamas. A sociedade foi organizada de forma autônoma, seguindo princípios socialistas-libertários e preservando a identidade cultural dos habitantes.</p>
-    <p>Apesar de não ser reconhecida oficialmente, a ilha mantém governo próprio, economia autônoma e práticas culturais únicas.</p>
+    <p>
+      Bracuyana foi fundada em 1994 por refugiados brasileiros e cubanos nas Bahamas. 
+      A sociedade foi organizada de forma autônoma, seguindo princípios socialistas-libertários 
+      e preservando a identidade cultural dos habitantes.
+    </p>
+    <p>
+      Apesar de não ser reconhecida oficialmente, a ilha mantém governo próprio, economia autônoma 
+      e práticas culturais únicas.
+    </p>
+
+    <!-- Imagens -->
     <div class="img-container">
       <img src="Brasão_9A.png" alt="Brasão de Bracuyana">
+      <img src="bandeira.png" alt="Bandeira de Bracuyana">
+    </div>
+
+    <!-- PDF -->
+    <div style="margin-top:30px;">
+      <h3>Documento Oficial em PDF</h3>
+      <p>
+        Confira abaixo o documento oficial sobre a história completa de Bracuyana. 
+        Você pode <strong>baixar</strong> ou <strong>visualizar diretamente</strong> no site.
+      </p>
+      <p>
+        <a href="lei_federal.pdf" download class="pdf-btn">📥 Baixar PDF</a>
+      </p>
+      <div style="margin-top:15px;">
+        <iframe src="lei_federal.pdf" height="500px"></iframe>
+        <p style="margin-top:10px; font-size:14px;">
+          Caso o PDF não carregue, clique no botão acima para baixar o documento.
+        </p>
+      </div>
     </div>
   </div>
 
   <!-- Cultura -->
   <div id="cultura" class="tab-content">
-    <h2>Cultura</h2>
-    <p>Combina elementos brasileiros e cubanos, adaptados à vida na ilha, com música, culinária e festas próprias.</p>
+    <h2>Cultura de Bracuyana</h2>
+    <p>Informações sobre cultura serão adicionadas aqui.</p>
   </div>
 
   <!-- Língua -->
   <div id="lingua" class="tab-content">
-    <h2>Língua</h2>
-    <p>O galego bracuyano é a língua oficial, mistura do galego com português brasileiro, com gírias e palavras próprias.</p>
+    <h2>Língua de Bracuyana</h2>
+    <p>Informações sobre a língua oficial serão adicionadas aqui.</p>
   </div>
 
   <!-- Geografia -->
   <div id="geografia" class="tab-content">
-    <h2>Geografia</h2>
-    <p>Localizada nas Bahamas, a ilha é discreta e cercada por águas cristalinas e vegetação tropical.</p>
-    <div class="img-container">
-      <img src="Brasão_9A.png" alt="Brasão de Bracuyana">
-    </div>
+    <h2>Geografia de Bracuyana</h2>
+    <p>Aqui está a localização de Bracuyana no mapa:</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.9173150864336!2d-61.5688!3d25.0664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDA0JzAwLjAiTiA2McKwMzQnMDguMCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000" 
+      width="100%" height="400" allowfullscreen="" loading="lazy"></iframe>
   </div>
 
   <!-- Notícias -->
   <div id="noticias" class="tab-content">
-    <h2>Notícias</h2>
-    <p>Informações internas, eventos culturais e mudanças políticas da ilha.</p>
+    <h2>Notícias de Bracuyana</h2>
+    <p>Em breve adicionaremos notícias atualizadas aqui.</p>
   </div>
+
 </main>
 
+<!-- Footer -->
 <footer>
   © 2025 Bracuyana - Todos os direitos reservados
 </footer>
 
 <script>
   const menu = document.getElementById('menu');
+  function toggleMenu() { menu.classList.toggle('active'); }
 
-  function toggleMenu() {
-    menu.classList.toggle('active');
-  }
-
-  function showTab(tabId){
-    const tabs = document.querySelectorAll('.tab-content');
-    tabs.forEach(t => t.classList.remove('active'));
+  function showTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
+    toggleMenu();
   }
 
-  function setTheme(theme){
-    if(theme === 'light'){
-      document.body.classList.add('light');
-      document.body.classList.remove('dark');
-    } else {
-      document.body.classList.add('dark');
-      document.body.classList.remove('light');
-    }
+  function toggleTheme() {
+    document.body.classList.toggle('light');
   }
 </script>
 
