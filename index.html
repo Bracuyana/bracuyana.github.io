@@ -125,18 +125,36 @@
     }
 
     /* Botão PDF */
+    .pdf-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
     .pdf-btn {
-      display:inline-block;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
       padding:10px 15px;
       background:#444;
       color:#fff;
       text-decoration:none;
       border-radius:5px;
       font-weight:bold;
+      font-size:14px;
     }
+    .pdf-btn:hover { background:#666; }
     body.light .pdf-btn {
       background:#ccc;
       color:#000;
+    }
+
+    /* Ícone do botão */
+    .pdf-btn svg {
+      width:18px;
+      height:18px;
+      fill: currentColor;
     }
 
     footer {
@@ -219,16 +237,18 @@
       <h3>Documento Oficial em PDF</h3>
       <p>
         Confira abaixo o documento oficial sobre a história completa de Bracuyana. 
-        Você pode <strong>baixar</strong> ou <strong>visualizar diretamente</strong> no site.
-      </p>
-      <p>
-        <a href="lei_federal" download class="pdf-btn">📥 Baixar PDF</a>
       </p>
       <div style="margin-top:15px;">
         <iframe src="lei_federal" height="500px"></iframe>
-        <p style="margin-top:10px; font-size:14px;">
-          Caso o PDF não carregue, clique no botão acima para baixar o documento.
-        </p>
+        <div class="pdf-actions">
+          <a href="lei_federal" download class="pdf-btn">
+            <!-- Ícone SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"/>
+            </svg>
+            Baixar PDF
+          </a>
+        </div>
       </div>
     </div>
   </div>
