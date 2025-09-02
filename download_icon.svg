@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="256" height="256" fill="none">
+  <!-- Simple download icon: shaft, arrowhead, and tray. Transparent background. -->
+  <g stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3v10" />
+    <path d="M8 11l4 4 4-4" />
+    <path d="M4 17h16" />
+  </g>
+</svg>
