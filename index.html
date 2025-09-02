@@ -35,8 +35,10 @@
   .pdf-btn:hover { background: #218838; }
   .pdf-btn img { width:24px; height:24px; }
 
-  iframe { border:1px solid #444; width:100%; }
-  body.light iframe { border:1px solid #ccc; }
+  #pdf-canvas { border:1px solid #444; width:100%; }
+  body.light #pdf-canvas { border:1px solid #ccc; }
+
+  iframe { display:none; } /* remove iframe do PDF antigo */
 
   footer { text-align:center; padding:10px; margin-top:20px; border-top: 1px solid #444; }
   body.light footer { border-top:1px solid #ccc; }
@@ -85,9 +87,10 @@
     <div style="margin-top:30px;">
       <h3>Documento Oficial em PDF</h3>
       <p>Confira abaixo o documento oficial sobre a história completa de Bracuyana.</p>
-      <iframe src="lei_federal" height="500px"></iframe>
+      
+      <!-- PDF.js canvas -->
+      <canvas id="pdf-canvas"></canvas>
       <div class="pdf-actions">
-        <!-- Botão só com ícone, dispara download via JS -->
         <button class="pdf-btn" onclick="downloadPDF()">
           <img src="download_icon.svg" alt="Download">
         </button>
@@ -122,6 +125,8 @@
   © 2025 Bracuyana - Todos os direitos reservados
 </footer>
 
+<!-- PDF.js via CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 <script>
   const menu = document.getElementById('menu');
   function toggleMenu() { menu.classList.toggle('active'); }
@@ -132,11 +137,33 @@
   }
   function toggleTheme() { document.body.classList.toggle('light'); }
 
-  // Função de download via JS
+  // PDF.js
+  const url = 'lei_federal';
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+  let pdfDoc = null,
+      pageNum = 1,
+      canvas = document.getElementById('pdf-canvas'),
+      ctx = canvas.getContext('2d');
+
+  function renderPage(num) {
+    pdfDoc.getPage(num).then(page => {
+      const viewport = page.getViewport({ scale: 1.2 });
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      page.render({ canvasContext: ctx, viewport: viewport });
+    });
+  }
+
+  pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
+    pdfDoc = pdfDoc_;
+    renderPage(pageNum);
+  });
+
   function downloadPDF() {
     const link = document.createElement('a');
-    link.href = 'lei_federal';
-    link.download = 'lei_federal';
+    link.href = url;
+    link.download = 'lei_federal.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
