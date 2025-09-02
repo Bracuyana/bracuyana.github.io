@@ -15,13 +15,11 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* Tema claro */
     body.light {
       background:#fff;
       color:#000;
     }
 
-    /* Sidebar */
     nav {
       position: fixed;
       left: -240px;
@@ -37,10 +35,7 @@
       z-index: 100;
       border-right: 2px solid #444;
     }
-    body.light nav {
-      background:#f0f0f0;
-      border-right: 2px solid #ccc;
-    }
+    body.light nav { background:#f0f0f0; border-right: 2px solid #ccc; }
 
     nav a {
       color: inherit;
@@ -48,14 +43,10 @@
       font-size: 1.1em;
       cursor:pointer;
     }
-
-    nav a:hover {
-      font-weight: bold;
-    }
+    nav a:hover { font-weight: bold; }
 
     nav.active { left: 0; }
 
-    /* Header */
     header {
       position: fixed;
       top:0;
@@ -71,10 +62,7 @@
       z-index: 101;
       transition: background 0.3s;
     }
-    body.light header {
-      background:#f0f0f0;
-      border-bottom:2px solid #ccc;
-    }
+    body.light header { background:#f0f0f0; border-bottom:2px solid #ccc; }
 
     header h1 {
       font-size:1.4em;
@@ -82,12 +70,8 @@
       align-items:center;
       gap:10px;
     }
-    header h1 img {
-      width:30px;
-      height:30px;
-    }
+    header h1 img { width:30px; height:30px; }
 
-    /* Menu Hamburguer */
     .menu-icon {
       cursor:pointer;
       width:25px; height:20px;
@@ -97,7 +81,6 @@
       height:3px; background:currentColor; border-radius:2px;
     }
 
-    /* Conteúdo principal */
     main {
       flex:1;
       margin-left:20px;
@@ -120,11 +103,8 @@
       border:1px solid #444;
       border-radius:5px;
     }
-    body.light .img-container img {
-      border:1px solid #ccc;
-    }
+    body.light .img-container img { border:1px solid #ccc; }
 
-    /* Botão PDF */
     .pdf-actions {
       display: flex;
       align-items: center;
@@ -145,16 +125,11 @@
       font-size:14px;
     }
     .pdf-btn:hover { background:#666; }
-    body.light .pdf-btn {
-      background:#ccc;
-      color:#000;
-    }
+    body.light .pdf-btn { background:#ccc; color:#000; }
 
-    /* Ícone do botão */
-    .pdf-btn svg {
+    .pdf-btn img {
       width:18px;
       height:18px;
-      fill: currentColor;
     }
 
     footer {
@@ -163,32 +138,17 @@
       margin-top:20px;
       border-top: 1px solid #444;
     }
-    body.light footer {
-      border-top:1px solid #ccc;
-    }
+    body.light footer { border-top:1px solid #ccc; }
 
-    /* Lista de opções no menu */
-    .menu-option {
-      margin-top:20px;
-      font-weight:bold;
-    }
-    .theme-toggle {
-      cursor:pointer;
-      margin-top:10px;
-    }
+    .menu-option { margin-top:20px; font-weight:bold; }
+    .theme-toggle { cursor:pointer; margin-top:10px; }
 
-    iframe {
-      border:1px solid #444;
-      width:100%;
-    }
-    body.light iframe {
-      border:1px solid #ccc;
-    }
+    iframe { border:1px solid #444; width:100%; }
+    body.light iframe { border:1px solid #ccc; }
   </style>
 </head>
 <body>
 
-<!-- Menu Lateral -->
 <nav id="menu">
   <a onclick="showTab('historia')">História</a>
   <a onclick="showTab('cultura')">Cultura</a>
@@ -199,21 +159,14 @@
   <div class="theme-toggle" onclick="toggleTheme()">🌙 Escuro / ☀️ Claro</div>
 </nav>
 
-<!-- Header -->
 <header>
-  <h1>
-    <img src="Brasão_9A.png" alt="Ícone"> Bracuyana
-  </h1>
+  <h1><img src="Brasão_9A.png" alt="Ícone"> Bracuyana</h1>
   <div class="menu-icon" onclick="toggleMenu()">
-    <div></div>
-    <div></div>
-    <div></div>
+    <div></div><div></div><div></div>
   </div>
 </header>
 
-<!-- Conteúdo -->
 <main>
-  <!-- História -->
   <div id="historia" class="tab-content active">
     <h2>História de Bracuyana</h2>
     <p>
@@ -226,26 +179,19 @@
       e práticas culturais únicas.
     </p>
 
-    <!-- Imagens -->
     <div class="img-container">
       <img src="Brasão_9A.png" alt="Brasão de Bracuyana">
       <img src="bandeira.png" alt="Bandeira de Bracuyana">
     </div>
 
-    <!-- PDF -->
     <div style="margin-top:30px;">
       <h3>Documento Oficial em PDF</h3>
-      <p>
-        Confira abaixo o documento oficial sobre a história completa de Bracuyana. 
-      </p>
+      <p>Confira abaixo o documento oficial sobre a história completa de Bracuyana.</p>
       <div style="margin-top:15px;">
-        <iframe src="lei_federal" height="500px"></iframe>
+        <iframe src="lei_federal.pdf" height="500px"></iframe>
         <div class="pdf-actions">
-          <a href="lei_federal" download class="pdf-btn">
-            <!-- Ícone SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d="M5 20h14v-2H5m14-9h-4V3H9v6H5l7 7 7-7z"/>
-            </svg>
+          <a href="lei_federal.pdf" download class="pdf-btn">
+            <img src="download_icon.svg" alt="Download">
             Baixar PDF
           </a>
         </div>
@@ -253,19 +199,16 @@
     </div>
   </div>
 
-  <!-- Cultura -->
   <div id="cultura" class="tab-content">
     <h2>Cultura de Bracuyana</h2>
     <p>Informações sobre cultura serão adicionadas aqui.</p>
   </div>
 
-  <!-- Língua -->
   <div id="lingua" class="tab-content">
     <h2>Língua de Bracuyana</h2>
     <p>Informações sobre a língua oficial serão adicionadas aqui.</p>
   </div>
 
-  <!-- Geografia -->
   <div id="geografia" class="tab-content">
     <h2>Geografia de Bracuyana</h2>
     <p>Aqui está a localização de Bracuyana no mapa:</p>
@@ -273,15 +216,12 @@
       width="100%" height="400" allowfullscreen="" loading="lazy"></iframe>
   </div>
 
-  <!-- Notícias -->
   <div id="noticias" class="tab-content">
     <h2>Notícias de Bracuyana</h2>
     <p>Em breve adicionaremos notícias atualizadas aqui.</p>
   </div>
-
 </main>
 
-<!-- Footer -->
 <footer>
   © 2025 Bracuyana - Todos os direitos reservados
 </footer>
@@ -289,16 +229,12 @@
 <script>
   const menu = document.getElementById('menu');
   function toggleMenu() { menu.classList.toggle('active'); }
-
   function showTab(tabId) {
     document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
     toggleMenu();
   }
-
-  function toggleTheme() {
-    document.body.classList.toggle('light');
-  }
+  function toggleTheme() { document.body.classList.toggle('light'); }
 </script>
 
 </body>
