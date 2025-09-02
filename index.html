@@ -15,10 +15,7 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    body.light {
-      background:#fff;
-      color:#000;
-    }
+    body.light { background:#fff; color:#000; }
 
     nav {
       position: fixed;
@@ -105,32 +102,31 @@
     }
     body.light .img-container img { border:1px solid #ccc; }
 
+    /* Estilo do botão de download */
     .pdf-actions {
       display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 15px;
+      justify-content: flex-start;
+      margin-top: 10px;
     }
-
     .pdf-btn {
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 15px;
-      background:#444;
-      color:#fff;
-      text-decoration:none;
-      border-radius:5px;
-      font-weight:bold;
-      font-size:14px;
+      background: #28a745; /* Verde */
+      border: none;
+      padding: 12px;
+      border-radius: 50%;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.3s;
     }
-    .pdf-btn:hover { background:#666; }
-    body.light .pdf-btn { background:#ccc; color:#000; }
-
+    .pdf-btn:hover { background: #218838; }
     .pdf-btn img {
-      width:18px;
-      height:18px;
+      width: 24px;
+      height: 24px;
     }
+
+    iframe { border:1px solid #444; width:100%; }
+    body.light iframe { border:1px solid #ccc; }
 
     footer {
       text-align:center;
@@ -142,9 +138,6 @@
 
     .menu-option { margin-top:20px; font-weight:bold; }
     .theme-toggle { cursor:pointer; margin-top:10px; }
-
-    iframe { border:1px solid #444; width:100%; }
-    body.light iframe { border:1px solid #ccc; }
   </style>
 </head>
 <body>
@@ -188,11 +181,13 @@
       <h3>Documento Oficial em PDF</h3>
       <p>Confira abaixo o documento oficial sobre a história completa de Bracuyana.</p>
       <div style="margin-top:15px;">
+        <!-- Exibir PDF no iframe sem forçar download -->
         <iframe src="lei_federal" height="500px"></iframe>
+        
+        <!-- Botão para download -->
         <div class="pdf-actions">
           <a href="lei_federal" download class="pdf-btn">
             <img src="download_icon.svg" alt="Download">
-            Baixar PDF
           </a>
         </div>
       </div>
